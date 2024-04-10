@@ -22,25 +22,21 @@ std::string infx2pstfx(std::string inf) {
                 continue;
             }
             star = star + ' ' + i;
-        }
-        else if (i == '+' || i == '-' || i == '*' || i == '/' ||  i == '(' || i == ')') {
+        } else if (i == '+' || i == '-' || i == '*'\
+            || i == '/' ||  i == '(' || i == ')') {
             if (i == '(') {
                 pstfx.push(i);
-            }
-            else if (pstfx.isemp()) {
+            } else if (pstfx.isemp()) {
                 pstfx.push(i);
-            }
-            else if (sraw(i) > sraw(pstfx.get())) {
+            } else if (sraw(i) > sraw(pstfx.get())) {
                 pstfx.push(i);
-            }
-            else if (i == ')') {
+            } else if (i == ')') {
                 while (pstfx.get() != '(') {
                     star = star + ' ' + pstfx.get();
                     pstfx.pop();
                 }
                 pstfx.pop();
-            }
-            else {
+            } else {
                 int x = sraw(i);
                 int y = sraw(pstfx.get());
                 while (!pstfx.isemp() && x <= y) {
@@ -55,7 +51,7 @@ std::string infx2pstfx(std::string inf) {
         star = star + ' ' + pstfx.get();
         pstfx.pop();
     }
-    return star;   
+    return star;
 }
 
 int eval(std::string pref) {
@@ -64,8 +60,7 @@ int eval(std::string pref) {
     for (char i : pref) {
         if (i >= '0' && i <= '9') {
             number.push(i - '0');
-        }
-        else if (sraw(i)) {
+        } else if (sraw(i)) {
             int x = number.get();
             number.pop();
             int y = number.get();
@@ -86,10 +81,9 @@ int eval(std::string pref) {
             default:
                 continue;
             }
-        }
-        else {
+        } else {
             continue;
         }
     }
-    return number.get();   
+    return number.get();
 }
