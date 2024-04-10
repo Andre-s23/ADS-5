@@ -5,10 +5,11 @@
 template<typename T, int size>
 class TStack {
   // добавьте код стека
-private:
+ private:
     T* arr;
     int begin;
-public:
+
+ public:
     TStack() : begin(-1) {
         arr = new T[size];
     }
